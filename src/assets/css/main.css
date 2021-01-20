@@ -1,0 +1,26 @@
+@font-face {
+  font-family: 'SFProDisplay';
+  src: url(~@/assets/fonts/SFProDisplay-Thin.woff) format ('woff'),
+    url(~@/assets/fonts/SFProDisplay-Thin.woff2) format ('woff2');
+}
+
+:root {
+  --body-color: #22333a;
+  --task-main-color: #30444e;
+  --task-todo-color: #ffc542;
+  --task-done-color: #3dd598;
+  --creator-color: #475e69;
+  --remover-color: #ff464f;
+  --app-width: 900px;
+  --fillet-radius: 10px;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: var(--body-color);
+}

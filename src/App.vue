@@ -1,26 +1,58 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Creator />
+  <div class="tasks">
+    <Task v-for="(task, id) of tasks" :key="id" v-bind="{ id, ...task }" />
+  </div>
+  <Remover />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { mapState, mapMutations } from 'vuex'
+import Creator from './components/Creator.vue'
+import Task from './components/Task.vue'
+import Remover from './components/Remover.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    Creator,
+    Task,
+    Remover,
+  },
+  methods: {
+    ...mapMutations(['deleteTask', 'addTask']),
+  },
+  computed: {
+    ...mapState(['tasks']),
+  },
+
+  mounted() {
+    Array(20)
+      .fill(0)
+      .forEach((_, n) =>
+        this.addTask({ text: 'some text ' + n, done: Math.random() > 0.5 })
+      )
+  },
 }
 </script>
 
 <style>
+@import 'assets/css/main.css';
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-family: Arial;
+  min-height: 100vh;
+  display: grid;
+  max-width: var(--app-width);
+  margin: auto;
+  grid-template-rows: 1fr;
+  position: relative;
+}
+
+.tasks {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 20px;
 }
 </style>
