@@ -1,10 +1,10 @@
 <template>
-  <DropField class="remover" :class="{ remover_hover: dropHover }"></DropField>
+  <DropField class="remover" :class="{ remover_hover: dropHover }"> </DropField>
 </template>
 
 <script>
 import DropField from './DropField.vue'
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 
 export default {
   name: 'Remover',

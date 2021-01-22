@@ -6,6 +6,7 @@ export default createStore({
     id: 0,
     dragMode: false,
     dropHover: false,
+    dropFieldTop: null,
   },
   mutations: {
     addTask(state, { text, done }) {
@@ -17,8 +18,23 @@ export default createStore({
     dragModeToggle(state) {
       state.dragMode = !state.dragMode
     },
+    setDragMode(state) {
+      state.dragMode = true
+    },
+    unsetDrag(state) {
+      state.dragMode = false
+    },
     dropHoverToggle(state) {
       state.dropHover = !state.dropHover
+    },
+    setDropHover(state) {
+      state.dropHover = true
+    },
+    unsetDropHover(state) {
+      state.dropHover = false
+    },
+    setDropFieldTop(state, value) {
+      state.dropFieldTop = value
     },
   },
   actions: {},

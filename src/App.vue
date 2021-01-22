@@ -3,6 +3,7 @@
   <div class="tasks">
     <Task v-for="(task, id) of tasks" :key="id" v-bind="{ id, ...task }" />
   </div>
+
   <Remover />
 </template>
 
