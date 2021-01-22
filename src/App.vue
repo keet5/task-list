@@ -29,13 +29,23 @@ export default {
 
   mounted() {
     const buf = []
+    const clearStorage = []
     for (let i = 0; i < localStorage.length; i++) {
       let key = localStorage.key(i)
       if (key.startsWith('task')) {
-        buf.push(JSON.parse(localStorage[key]))
+        console.log()
+        buf.push([
+          parseInt(key.replace(/^task/, '')),
+          JSON.parse(localStorage[key]),
+        ])
+        clearStorage.push(key)
       }
     }
-    buf.reverse().forEach((task) => this.addTask(task))
+    clearStorage.forEach((key) => delete localStorage[key])
+    buf
+      .sort((a, b) => a[0] - b[0])
+      .map(([_, task]) => task)
+      .forEach((task) => this.addTask(task))
   },
 }
 </script>
