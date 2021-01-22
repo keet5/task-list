@@ -28,11 +28,16 @@ export default {
   },
 
   mounted() {
-    Array(20)
-      .fill(0)
-      .forEach((_, n) =>
-        this.addTask({ text: 'some text ' + n, done: Math.random() > 0.5 })
-      )
+    const buf = []
+    for (let i = 0; i < localStorage.length; i++) {
+      let key = localStorage.key(i)
+      if (key.startsWith('task')) {
+        
+        buf.unshift(JSON.parse(localStorage[key]))
+      }
+    }
+    buf.forEach(task => this.addTask(task))
+    console.log(buf.length)
   },
 }
 </script>
@@ -46,7 +51,7 @@ export default {
   display: grid;
   max-width: var(--app-width);
   margin: auto;
-  grid-template-rows: 1fr;
+  grid-template-rows: auto 1fr;
   position: relative;
 }
 

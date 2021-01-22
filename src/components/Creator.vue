@@ -58,9 +58,11 @@ export default {
 .creator__button {
   border-radius: 0 0 var(--fillet-radius) 0;
   border: none;
+  background-color: var(--creator-button-color);
+  color: var(--text-color);
 }
 
 .creator__button:hover {
-  background-color: lightgrey;
+  background-color: var(--creator-button-color-hover);
 }
 </style>

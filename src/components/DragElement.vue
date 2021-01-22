@@ -105,10 +105,7 @@ export default {
     },
     ...mapMutations([
       'dragModeToggle',
-      'unsetDrag',
       'setDragMode',
-      'setDropHover',
-      'unsetDropHover',
       'dropHoverToggle',
       'deleteTask',
     ]),

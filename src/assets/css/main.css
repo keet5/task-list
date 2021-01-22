@@ -10,7 +10,12 @@
   --task-todo-color: #ffc542;
   --task-done-color: #3dd598;
   --creator-color: #475e69;
-  --remover-color: #ff464f;
+  --remover-color: #ff8a34;
+  --remover-color-hover: #ff464f;
+  --text-color: #ffffff;
+
+  --creator-button-color: #163e72;
+  --creator-button-color-hover: #0062ff;
   --app-width: 900px;
   --fillet-radius: 10px;
 }

@@ -10,10 +10,13 @@ export default createStore({
   },
   mutations: {
     addTask(state, { text, done }) {
-      state.tasks[state.id++] = { text, done }
+      state.tasks[state.id] = { text, done }
+      localStorage['task' + state.id] = JSON.stringify({ text, done })
+      state.id++
     },
     deleteTask(state, id) {
       delete state.tasks[id]
+      delete localStorage['task' + id]
     },
     dragModeToggle(state) {
       state.dragMode = !state.dragMode
@@ -21,21 +24,14 @@ export default createStore({
     setDragMode(state) {
       state.dragMode = true
     },
-    unsetDrag(state) {
-      state.dragMode = false
-    },
     dropHoverToggle(state) {
       state.dropHover = !state.dropHover
-    },
-    setDropHover(state) {
-      state.dropHover = true
-    },
-    unsetDropHover(state) {
-      state.dropHover = false
     },
     setDropFieldTop(state, value) {
       state.dropFieldTop = value
     },
+  },
+  getters: {
   },
   actions: {},
   modules: {},

@@ -12,12 +12,24 @@
 
 <script>
 import DragElement from './DragElement.vue'
+import { mapState } from 'vuex'
 
 export default {
   name: 'Task',
   props: ['id', 'text', 'done'],
   components: {
     DragElement,
+  },
+  computed: {
+    ...mapState(['tasks']),
+  },
+  watch: {
+    done() {
+      localStorage['task' + this.id] = JSON.stringify({
+        text: this.text,
+        done: this.done,
+      })
+    },
   },
 }
 </script>

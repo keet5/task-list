@@ -19,7 +19,12 @@ export default {
   name: 'DropField',
 
   methods: {
-    ...mapMutations(['deleteTask', 'dropHoverToggle', 'setDropFieldTop', 'dragModeToggle']),
+    ...mapMutations([
+      'deleteTask',
+      'dropHoverToggle',
+      'setDropFieldTop',
+      'dragModeToggle',
+    ]),
 
     dragEnter(event) {
       this.dropHoverToggle()
@@ -30,6 +35,7 @@ export default {
     },
 
     dragDrop(event) {
+      this.dropHoverToggle()
       this.deleteTask(event.dataTransfer.getData('id'))
     },
   },
@@ -39,10 +45,12 @@ export default {
   watch: {
     dragMode() {
       if (this.dragMode) {
-        nextTick(() => this.setDropFieldTop(this.$refs.dropField.getBoundingClientRect().top))
+        nextTick(() =>
+          this.setDropFieldTop(this.$refs.dropField.getBoundingClientRect().top)
+        )
       }
-    }
-  }    
+    },
+  },
 }
 </script>
 
