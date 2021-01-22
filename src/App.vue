@@ -32,12 +32,10 @@ export default {
     for (let i = 0; i < localStorage.length; i++) {
       let key = localStorage.key(i)
       if (key.startsWith('task')) {
-        
-        buf.unshift(JSON.parse(localStorage[key]))
+        buf.push(JSON.parse(localStorage[key]))
       }
     }
-    buf.forEach(task => this.addTask(task))
-    console.log(buf.length)
+    buf.reverse().forEach((task) => this.addTask(task))
   },
 }
 </script>
